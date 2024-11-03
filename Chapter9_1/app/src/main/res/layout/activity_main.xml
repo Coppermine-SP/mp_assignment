@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:ignore="HardcodedText" >
 
     <EditText
             android:id="@+id/lhs_text"
@@ -31,7 +32,53 @@
         android:id="@+id/numBtn_table"
         android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
+        <TableRow>
+            <Button
+                android:minWidth="0dp"
+                android:id="@+id/num_0_btn"
+                android:text="0" />
+            <Button
+                android:minWidth="0dp"
+                android:id="@+id/num_1_btn"
+                android:text="1"/>
+            <Button
+                android:minWidth="0dp"
+                android:id="@+id/num_2_btn"
+                android:text="2"/>
+            <Button
+                android:minWidth="0dp"
+                android:id="@+id/num_3_btn"
+                android:text="3"/>
+            <Button
+                android:minWidth="0dp"
+                android:id="@+id/num_4_btn"
+                android:text="4"/>
+        </TableRow>
+        <TableRow>
+            <Button
+                android:minWidth="0dp"
+                android:id="@+id/num_5_btn"
+                android:text="5"/>
+            <Button
+                android:minWidth="0dp"
+                android:id="@+id/num_6_btn"
+                android:text="6"/>
+            <Button
+                android:minWidth="0dp"
+                android:id="@+id/num_7_btn"
+                android:text="7"/>
+            <Button
+                android:minWidth="0dp"
+                android:id="@+id/num_8_btn"
+                android:text="8"/>
+            <Button
+                android:minWidth="0dp"
+                android:id="@+id/num_9_btn"
+                android:text="9"/>
+        </TableRow>
+    </TableLayout>
 
     <Button
         android:id="@+id/add_btn"
