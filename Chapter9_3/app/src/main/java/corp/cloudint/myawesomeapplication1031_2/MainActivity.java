@@ -1,8 +1,12 @@
+/*
+    MainActivity - MyAwesomeApplication1031_2
+    Copyright (C) 2024-2025 Coppermine-SP - <국립창원대학교 컴퓨터공학과 20233063 손유찬>
+ */
 package corp.cloudint.myawesomeapplication1031_2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,8 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
     final Integer[] imageBtnList = {R.id.img_1, R.id.img_2, R.id.img_3, R.id.img_4, R.id.img_5, R.id.img_6, R.id.img_7, R.id.img_8, R.id.img_9};
     final String[] imageNameList = {"아이오닉 5N", "다람쥐", "독수리", "꼬양이", "부엉이", "푸바오", "BMW M2", "따봉맨", "마이바흐"};
-    Integer[] imageRatingList = {0, 0, 0, 0, 0, 0, 0, 0, 0};
-    int index;
+    int[] imageRatingList = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +43,8 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         }
                     }
-
-                    Toast.makeText(getApplicationContext(), imageNameList[index] + " 작품에 투표되었습니다.", Toast.LENGTH_SHORT).show();
                     imageRatingList[index]++;
+                    Toast.makeText(getApplicationContext(), imageNameList[index] + ": 총 " + imageRatingList[index] + " 표", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -50,7 +52,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.end_vote).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                intent.putExtra("RatingList", imageRatingList);
+                intent.putExtra("ImageName", imageNameList);
+                startActivity(intent);
             }
         });
     }
