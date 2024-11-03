@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+            android:id="@+id/lhs_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="숫자 1 입력"
+            android:inputType="number"
+            android:cursorVisible="false"
+            android:importantForAutofill="no"/>
+    <EditText
+            android:id="@+id/rhs_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="숫자 2 입력"
+            android:inputType="number"
+            android:cursorVisible="false"
+            android:importantForAutofill="no"
+            android:layout_marginBottom="20dp"/>
+
+    <TableLayout
+        android:id="@+id/numBtn_table"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/add_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="더하기"/>
+    <Button
+        android:id="@+id/sub_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="빼기"/>
+    <Button
+        android:id="@+id/mul_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="곱하기"/>
+    <Button
+        android:id="@+id/div_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="나누기"/>
+    <TextView
+        android:id="@+id/result_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="계산 결과:"
+        android:textSize="20sp"
+        android:textColor="#FF0000"/>
+</LinearLayout>
