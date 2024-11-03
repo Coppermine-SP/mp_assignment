@@ -5,108 +5,38 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".MainActivity"
     android:layout_margin="10dp"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="3"
-        android:layout_marginBottom="10dp">
-        <ImageView
-            android:id="@+id/img_1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/image1"/>
-        <ImageView
-            android:id="@+id/img_2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@drawable/image2"/>
-        <ImageView
-            android:id="@+id/img_3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@drawable/image3"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="3">
+    android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/img_4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/image4"/>
-        <ImageView
-            android:id="@+id/img_5"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@drawable/image5"/>
-        <ImageView
-            android:id="@+id/img_6"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="center"
-            android:src="@drawable/image6"/>
-    </LinearLayout>
-    <LinearLayout
+
+    <RadioGroup
+        android:id="@+id/btn_group"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="3">
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/btn_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="엑티비티 1"
+            android:textSize="18sp"/>
+        <RadioButton
+            android:id="@+id/btn_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="엑티비티 2"
+            android:textSize="18sp"/>
+        <RadioButton
+            android:id="@+id/btn_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="엑티비티 3"
+            android:textSize="18sp"/>
+    </RadioGroup>
 
-        <ImageView
-            android:id="@+id/img_7"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/image7"/>
-        <ImageView
-            android:id="@+id/img_8"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@drawable/image8"/>
-        <ImageView
-            android:id="@+id/img_9"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:src="@drawable/image9"/>
-
-    </LinearLayout>
     <Button
-        android:id="@+id/end_vote"
+        android:id="@+id/go_btn"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="투표 종료"
-        android:textSize="20sp"
-        android:layout_weight="1"/>
-
+        android:layout_height="wrap_content"
+        android:text="이동"/>
 </LinearLayout>

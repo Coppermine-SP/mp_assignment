@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "corp.cloudint.myawesomeapplication1031_1"
+    namespace = "corp.cloudint.myawesomeapplication1031_2"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "corp.cloudint.myawesomeapplication1031_1"
+        applicationId = "corp.cloudint.myawesomeapplication1031_2"
         minSdk = 34
         targetSdk = 34
         versionCode = 1
