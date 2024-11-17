@@ -1,5 +1,6 @@
 package corp.cloudint.chapter11_1;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.database.Cursor;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseHelper dbHelper;
     private long selectedId = -1;
 
+    @SuppressLint("Range")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
