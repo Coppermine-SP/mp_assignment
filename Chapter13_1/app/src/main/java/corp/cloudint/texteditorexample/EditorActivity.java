@@ -19,6 +19,8 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 
+import kotlin.io.NoSuchFileException;
+
 public class EditorActivity extends AppCompatActivity {
     private EditText editText;
     private String fileName;
@@ -50,8 +52,7 @@ public class EditorActivity extends AppCompatActivity {
             editText.setText(text);
         }
         catch (IOException e){
-            Toast.makeText(this, "파일 열기 실패", Toast.LENGTH_LONG).show();
-            finish();
+            editText.setText("");
         }
     }
 
