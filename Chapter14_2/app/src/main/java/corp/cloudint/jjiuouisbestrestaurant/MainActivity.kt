@@ -8,7 +8,6 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -19,22 +18,19 @@ import androidx.room.Room
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import corp.cloudint.jjiuouisbestrestaurant.Contexts.LocationDbContext
-import corp.cloudint.jjiuouisbestrestaurant.Contexts.RoomLocationDAO
-import corp.cloudint.jjiuouisbestrestaurant.Models.Location
 
 class MainActivity : AppCompatActivity() {
     private val MAPVIEW_BUNDLE_KEY = "MapViewBundleKey"
     private val LOCATION_PERMISSION_REQUEST_CODE = 1
 
-    private lateinit var mapView: MapView;
-    private lateinit var googleMap: GoogleMap;
-    private lateinit var locationProvider: FusedLocationProviderClient;
+    private lateinit var mapView: MapView
+    private lateinit var googleMap: GoogleMap
+    private lateinit var locationProvider: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,15 +42,16 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        mapView = findViewById(R.id.mapsView);
-        locationProvider = LocationServices.getFusedLocationProviderClient(this);
+        mapView = findViewById(R.id.mapsView)
+        locationProvider = LocationServices.getFusedLocationProviderClient(this)
         val mapViewBundle = savedInstanceState?.getBundle(MAPVIEW_BUNDLE_KEY)
         mapView.onCreate(mapViewBundle)
 
         mapView.getMapAsync({m ->
             googleMap = m
             checkPermission()
-        } )
+        })
+
     }
 
     override fun onResume(){
@@ -86,17 +83,17 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if(requestCode == LOCATION_PERMISSION_REQUEST_CODE &&
             grantResults.isNotEmpty() &&
-            grantResults[0] == PackageManager.PERMISSION_GRANTED) showLocations()
+            grantResults[0] == PackageManager.PERMISSION_GRANTED) mapInit()
     }
 
     private fun checkPermission(){
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
-        else showLocations()
+        else mapInit()
     }
 
     @SuppressLint("DefaultLocale", "SuspiciousIndentation")
-    private fun showLocations(){
+    private fun mapInit(){
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             googleMap.isMyLocationEnabled = true
             locationProvider.lastLocation.addOnSuccessListener({ location ->
@@ -106,19 +103,24 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         }
-    }
-
-    private fun setDemoData(dao: RoomLocationDAO){
-        dao.insert(Location())
+        configureDatabase()
     }
 
     private fun configureDatabase(){
         val helper = Room.databaseBuilder(this, LocationDbContext::class.java, "location_db")
+            .createFromAsset("default.sqlite")
+            .fallbackToDestructiveMigration()
             .allowMainThreadQueries() // not recommend.
             .build()
 
-        val dao = helper.RoomLocationDAO();
+        val dao = helper.RoomLocationDAO()
+        val locations = dao.selectAll()
 
-        if(dao.selectAll().size == 0)
+        for(x in locations){
+            googleMap.addMarker(MarkerOptions()
+                .position(LatLng(x.lat, x.long))
+                .title(x.name))?.tag = x.id
+        }
+
     }
 }

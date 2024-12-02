@@ -6,15 +6,13 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import corp.cloudint.jjiuouisbestrestaurant.Models.Location
 
 @Dao
 interface RoomLocationDAO{
     @Query("SELECT * FROM location")
-    fun selectAll() : MutableSet<Location>
-
+    fun selectAll() : Array<Location>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(x: Location)
 

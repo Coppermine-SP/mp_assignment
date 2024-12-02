@@ -1,22 +1,14 @@
-package corp.cloudint.jjiuouisbestrestaurant.Models;
+package corp.cloudint.jjiuouisbestrestaurant.Models
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = "location")
-class Location {
-    fun Location() {}
-
-    fun Location(name: String, lat: Double, long: Double){
-        this.name = name;
-
-    }
-
-
+class Location() {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo
-    var id: Long? = null;
+    var id: Long? = null
 
     @ColumnInfo
     var name: String = ""
