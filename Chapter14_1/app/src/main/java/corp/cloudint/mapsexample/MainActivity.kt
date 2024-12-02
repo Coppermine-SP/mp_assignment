@@ -19,7 +19,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdate
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 
@@ -89,10 +88,10 @@ class MainActivity : AppCompatActivity() {
             grantResults[0] == PackageManager.PERMISSION_GRANTED) showCurrentLocation()
     }
 
-    @SuppressLint("DefaultLocale")
+    @SuppressLint("DefaultLocale", "SuspiciousIndentation")
     private fun showCurrentLocation(){
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
-        locationProvider.getLastLocation().addOnSuccessListener({location ->
+        locationProvider.lastLocation.addOnSuccessListener({ location ->
             if(location != null){
                 val curLoc = LatLng(location.latitude, location.longitude);
                 val marker = googleMap.addMarker(MarkerOptions()
